@@ -17,6 +17,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Guard</th>
                             <th scope="col" class="text-center" style="width: 15%;">Actions</th>
                         </tr>
                     </thead>
@@ -26,6 +27,7 @@
                             <tr>
                                 <th scope="row">{{ $loop->index }}</th>
                                 <td>{{ $role->name }}</td>
+                                <td>{{ $role->guard_name }}</td>
                                 <td>
                                     <div class="w-100 d-flex justify-content-center align-items-center">
                                         <a class="btn btn-warning mx-1">Edit</a>

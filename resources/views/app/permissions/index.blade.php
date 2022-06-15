@@ -16,7 +16,11 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Permissions</th>
+                            <th scope="col">Guard</th>
+                            @foreach ($roles as $role)
+                                <th scope="col">{{ $role->name }}</th>
+                            @endforeach
                             <th scope="col" class="text-center" style="width: 15%;">Actions</th>
                         </tr>
                     </thead>
@@ -24,9 +28,21 @@
 
                         @forelse ($permissions as $permission)
                             <tr>
-                                <th scope="row">{{ $loop->index }}</th>
-                                <td>{{ $permission->name }}</td>
-                                <td>
+                                <td style="vertical-align: middle;" scope="row">{{ $loop->index + 1 }}</td>
+                                <td style="vertical-align: middle;">{{ $permission->name }}</td>
+                                @foreach ($roles as $role)
+                                    @if ($loop->index == 0)
+                                        <td style="vertical-align: middle;">{{ $role->guard_name }}</td>
+                                    @endif
+                                    <td style="vertical-align: middle;">
+                                        <div class="form-check" class="text-center">
+                                            <input class="form-check-input" type="checkbox" value="1"
+                                                id="role_{{ $role->id }}_permission_{{ $permission->id }}"
+                                                onchange="assignPermissionToRole({{ $role->id }}, {{ $permission->id }})">
+                                        </div>
+                                    </td>
+                                @endforeach
+                                <td style="vertical-align: middle;">
                                     <div class="w-100 d-flex justify-content-center align-items-center">
                                         <a class="btn btn-warning mx-1">Edit</a>
                                         <a class="btn btn-danger mx-1">Delete</a>
@@ -46,4 +62,9 @@
 @endsection
 
 @section('PageJS')
+    <script>
+        function assignPermissionToRole(role_id, permission_id) {
+            console.log('role_id => ' + role_id, 'permission_id => ' + permission_id);
+        }
+    </script>
 @endsection

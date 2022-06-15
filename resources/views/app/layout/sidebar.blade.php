@@ -103,7 +103,7 @@
                     </svg>
                     Roles & Permissions
                 </a>
-                <div class="collapse {{ request()->routeIs('roles.*') ? 'show' : '' }}" id="home-collapse">
+                <div class="collapse {{ request()->routeIs('roles.*') || request()->routeIs('permissions.*') ? 'show' : '' }}" id="home-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li>
                             <a href="{{ route('roles.index') }}" class="{{ request()->routeIs('roles.*') ? 'active' : 'link-dark' }} d-inline-flex text-decoration-none rounded">Roles</a>
