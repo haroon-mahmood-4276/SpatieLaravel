@@ -10,4 +10,15 @@ class HomeController extends Controller
     {
         return view('app.home');
     }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
+    }
 }
