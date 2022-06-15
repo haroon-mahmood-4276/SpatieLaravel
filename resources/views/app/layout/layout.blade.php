@@ -58,6 +58,25 @@
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
         }
+
+        .split {
+            height: 100%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+        }
+
+        .left {
+            left: 0;
+            width: 15%
+            background-color: #111;
+        }
+
+        .right {
+            right: 0;
+            width: 85%;
+        }
     </style>
     <link rel="stylesheet" href="{{ asset('app/css') }}/sidebar.css">
     @yield('PageCSS')
@@ -67,10 +86,12 @@
 <body>
 
     {{-- {{ $errors }} --}}
-
+<div class="split left">
     {{ view('app.layout.sidebar') }}
-
+</div>
+<div class="split right">
     @yield('content')
+</div>
 
     @yield('PageJS')
 

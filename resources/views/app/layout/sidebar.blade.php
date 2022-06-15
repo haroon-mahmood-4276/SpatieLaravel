@@ -88,55 +88,31 @@
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                    <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#home" />
-                    </svg>
-                    Home
-                </a>
-                <div class="collapse show" id="home-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Overview</a>
-                        </li>
-                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Updates</a>
-                        </li>
-                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Reports</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             <li>
-                <a href="#" class="nav-link link-dark">
+                <a href="{{ route('home') }}" class="nav-link {{ (request()->is('home')) ? 'active' : 'link-dark' }}">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#speedometer2" />
                     </svg>
                     Dashboard
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
+            <li class="nav-item ">
+                <a href="#" class="nav-link {{ (request()->is('roles*')) ? 'active' : 'link-dark' }}" aria-current="page" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                     <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#table" />
+                        <use xlink:href="#home" />
                     </svg>
-                    Orders
+                    Roles & Permissions
                 </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#grid" />
-                    </svg>
-                    Products
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#people-circle" />
-                    </svg>
-                    Customers
-                </a>
+                <div class="collapse {{ (request()->is('roles*')) ? 'show' : '' }}" id="home-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li>
+                            <a href="{{ route('roles.index') }}" class="link-dark d-inline-flex text-decoration-none rounded">Roles</a>
+                        </li>
+                        <li>
+                            <a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Permissions</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
         <hr>
@@ -144,16 +120,13 @@
             <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
                 id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>mdo</strong>
+                <strong>{{ auth()->user()->name }}</strong>
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li>
+                {{-- <li>
                     <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </li> --}}
+                <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
             </ul>
         </div>
     </div>
