@@ -69,13 +69,16 @@
 
         .left {
             left: 0;
-            width: 15%
-            background-color: #111;
+            width: 15% background-color: #111;
         }
 
         .right {
             right: 0;
             width: 85%;
+        }
+
+        .collapse>.btn-toggle-nav>li>a.active {
+            background-color: #d2f4ea;
         }
     </style>
     <link rel="stylesheet" href="{{ asset('app/css') }}/sidebar.css">
@@ -86,12 +89,12 @@
 <body>
 
     {{-- {{ $errors }} --}}
-<div class="split left">
-    {{ view('app.layout.sidebar') }}
-</div>
-<div class="split right">
-    @yield('content')
-</div>
+    <div class="split left">
+        {{ view('app.layout.sidebar') }}
+    </div>
+    <div class="split right">
+        @yield('content')
+    </div>
 
     @yield('PageJS')
 

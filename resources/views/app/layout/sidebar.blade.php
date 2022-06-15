@@ -97,19 +97,19 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link {{ (request()->is('roles*')) ? 'active' : 'link-dark' }}" aria-current="page" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                <a href="#" class="nav-link {{ request()->routeIs('roles.*') ? 'active' : 'link-dark' }}" aria-current="page" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#home" />
                     </svg>
                     Roles & Permissions
                 </a>
-                <div class="collapse {{ (request()->is('roles*')) ? 'show' : '' }}" id="home-collapse">
+                <div class="collapse {{ request()->routeIs('roles.*') ? 'show' : '' }}" id="home-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li>
-                            <a href="{{ route('roles.index') }}" class="link-dark d-inline-flex text-decoration-none rounded">Roles</a>
+                            <a href="{{ route('roles.index') }}" class="{{ request()->routeIs('roles.*') ? 'active' : 'link-dark' }} d-inline-flex text-decoration-none rounded">Roles</a>
                         </li>
                         <li>
-                            <a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Permissions</a>
+                            <a href="{{ route('permissions.index') }}" class="{{ request()->routeIs('permissions.*') ? 'active' : 'link-dark' }} d-inline-flex text-decoration-none rounded">Permissions</a>
                         </li>
                     </ul>
                 </div>

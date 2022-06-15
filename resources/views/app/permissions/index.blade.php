@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="w-100 text-end">
-                    <a href="{{ route('roles.create') }}" class="btn btn-primary">Add</a>
+                    <a href="{{ route('permissions.create') }}" class="btn btn-primary">Add</a>
                 </div>
             </div>
             <div class="card-body">
@@ -22,10 +22,10 @@
                     </thead>
                     <tbody>
 
-                        @forelse ($roles as $role)
+                        @forelse ($permissions as $permission)
                             <tr>
                                 <th scope="row">{{ $loop->index }}</th>
-                                <td>{{ $role->name }}</td>
+                                <td>{{ $permission->name }}</td>
                                 <td>
                                     <div class="w-100 d-flex justify-content-center align-items-center">
                                         <a class="btn btn-warning mx-1">Edit</a>

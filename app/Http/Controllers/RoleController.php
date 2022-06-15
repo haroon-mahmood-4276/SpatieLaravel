@@ -12,4 +12,18 @@ class RoleController extends Controller
         $roles = (new Role())->all();
         return view('app.roles.index', ['roles' => $roles]);
     }
+
+    public function create(Request $request)
+    {
+        return view('app.roles.create');
+    }
+
+    public function store(Request $request)
+    {
+        (new Role())->create([
+            'name' => $request->role_name
+        ]);
+
+        return redirect()->route('roles.index');
+    }
 }
