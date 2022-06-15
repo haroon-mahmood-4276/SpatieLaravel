@@ -29,10 +29,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/create', [RoleController::class, 'create'])->name('create');
         Route::post('/store', [RoleController::class, 'store'])->name('store');
 
-    }); Route::group(['prefix' => 'permissions', 'as' => 'permissions.'], function () {
+        Route::group(['prefix' => '/{role_id}'], function () {
+            Route::get('/permissions/{permission_id}/assign', [RoleController::class, 'assignPermission'])->name('assignPermission');
+        });
+    });
+
+    Route::group(['prefix' => 'permissions', 'as' => 'permissions.'], function () {
         Route::get('/', [PermissionController::class, 'index'])->name('index');
         Route::get('/create', [PermissionController::class, 'create'])->name('create');
         Route::post('/store', [PermissionController::class, 'store'])->name('store');
-
     });
 });

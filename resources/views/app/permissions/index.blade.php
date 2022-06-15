@@ -65,6 +65,17 @@
     <script>
         function assignPermissionToRole(role_id, permission_id) {
             console.log('role_id => ' + role_id, 'permission_id => ' + permission_id);
+            $.ajax({
+                type: 'GET',
+                url: '/assignPermissionToRole',
+                data: {
+                    role_id: role_id,
+                    permission_id, permission_id,
+                },
+                success: function(data) {
+                    $("#msg").html(data.msg);
+                }
+            });
         }
     </script>
 @endsection
