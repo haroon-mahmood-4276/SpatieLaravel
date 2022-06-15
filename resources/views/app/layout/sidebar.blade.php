@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class="nav-link {{ request()->routeIs('roles.*') ? 'active' : 'link-dark' }}" aria-current="page" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                <a href="javascript:void(0)" class="nav-link {{ request()->routeIs('roles.*') ? 'active' : 'link-dark' }}" aria-current="page" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#home" />
                     </svg>
