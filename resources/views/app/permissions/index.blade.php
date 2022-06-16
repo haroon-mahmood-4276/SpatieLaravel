@@ -73,7 +73,7 @@
                     permission_id, permission_id,
                 },
                 success: function(data) {
-                    $("#msg").html(data.msg);
+                    console.log(data);
                 }
             });
         }
